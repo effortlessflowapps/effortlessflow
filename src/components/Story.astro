@@ -1,98 +1,198 @@
 ---
-import mascot from '../assets/toby-mascot.png';
+import davidToon from '../assets/david-toon.svg';
+import storyProblems from '../assets/story-problems.svg';
+import storyPlan from '../assets/story-plan.svg';
 ---
 
 <section class="section story" id="about">
-  <div class="container story__inner">
-    <div class="story__text">
-      <p class="eyebrow">Hi, I'm David</p>
-      <h2>The guy behind EffortlessFlow</h2>
-      <p>
-        EffortlessFlow is a tiny software team — currently just me — building
-        simple, focused apps for everyday problems.
-      </p>
-      <p>
-        You know all those little things that make life harder than it needs to
-        be? The wishlist scattered across three apps. The downloads folder you
-        stopped opening. The thing you quietly gave up and learned to tolerate.
-        Most of what I build starts right there — with an annoying thing I
-        noticed, and the thought <em>surely there's a better way</em>.
-      </p>
-      <p>
-        The plan is software that helps without becoming yet another thing to
-        manage. No accounts you didn't ask for, no features you have to learn —
-        just enough to work, and work well. And I'm building it all in the
-        open, one specific problem at a time.
-      </p>
-      <blockquote class="story__mantra">
-        Just enough to work, and work well.
-      </blockquote>
+  <div class="container">
+    <div class="story__row">
+      <figure class="story__art story__art--who">
+        <img
+          src={davidToon.src}
+          width={606}
+          height={687}
+          alt="Cartoon portrait of David"
+          loading="lazy"
+        />
+        <figcaption>the team, as of today</figcaption>
+      </figure>
+      <div class="story__copy">
+        <h2 class="story__title">Hi, I'm <span class="story__name">David</span></h2>
+        <p class="story__lede">The guy behind EffortlessFlow.</p>
+        <p>
+          EffortlessFlow is a tiny software team — currently just me — building
+          simple, focused apps for everyday problems.
+        </p>
+      </div>
     </div>
-    <aside class="story__card" aria-hidden="true">
-      <img src={mascot.src} width={120} height={99} alt="" />
-      <p class="story__card-note">
-        growth, one small wish at a time — toby's little mascot
-      </p>
-    </aside>
+
+    <div class="story__row">
+      <figure class="story__art story__art--why" aria-hidden="true">
+        <img src={storyProblems.src} width={520} height={420} alt="" loading="lazy" />
+      </figure>
+      <div class="story__copy">
+        <h3 class="story__subhead">
+          You know all those little things that make life harder than it needs
+          to be?
+        </h3>
+        <ul class="story__pains">
+          <li>The wishlist scattered across three apps.</li>
+          <li>The downloads folder you stopped opening.</li>
+          <li>The thing you quietly gave up and learned to tolerate.</li>
+        </ul>
+        <p>
+          Most of what I build starts right there — with an annoying thing I
+          noticed, and the thought <em>surely there's a better way</em>.
+        </p>
+      </div>
+    </div>
+
+    <div class="story__row story__row--flip">
+      <div class="story__copy">
+        <h3 class="story__subhead">
+          The plan is software that helps without becoming yet another thing to
+          manage.
+        </h3>
+        <p>
+          No accounts you didn't ask for, no features you have to learn. And
+          I'm building it all in the open, one specific problem at a time.
+        </p>
+      </div>
+      <figure class="story__art story__art--plan" aria-hidden="true">
+        <img src={storyPlan.src} width={520} height={420} alt="" loading="lazy" />
+      </figure>
+    </div>
   </div>
 </section>
 
 <style>
-  .story__inner {
+  .story__row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 15rem;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: start;
-  }
-
-  .story__text {
-    max-width: 40rem;
-  }
-
-  .story__mantra {
-    margin: 2.25rem 0 0;
-    padding: 1.4rem 1.75rem;
-    border-left: 4px solid var(--ef-orange);
-    border-radius: 0 var(--radius-card) var(--radius-card) 0;
-    background: var(--ef-forest-wash);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--ef-forest);
-  }
-
-  .story__card {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
     align-items: center;
+  }
+
+  .story__row + .story__row {
+    margin-top: clamp(4.5rem, 9vw, 6.75rem);
+  }
+
+  .story__row--flip .story__art {
+    order: 2;
+  }
+
+  .story__art {
+    margin: 0;
+    display: grid;
     gap: 0.9rem;
-    padding: 2rem 1.5rem;
-    border: 1.5px solid var(--ef-line);
+    justify-items: center;
+    padding: clamp(1.9rem, 4vw, 2.75rem) clamp(1.9rem, 4vw, 2.9rem);
     border-radius: var(--radius-card);
-    background: #fff;
-    rotate: 1.5deg;
-    margin-top: 3.4rem;
+    background: var(--ef-forest-wash);
   }
 
-  .story__card img {
-    width: 118px;
+  .story__art--who {
+    rotate: -1.6deg;
   }
 
-  .story__card-note {
+  .story__art--why {
+    rotate: 1.4deg;
+  }
+
+  .story__art--plan {
+    rotate: -1.2deg;
+  }
+
+  .story__art img {
+    width: 100%;
+    height: auto;
+  }
+
+  .story__art figcaption {
     margin: 0;
     font-size: var(--fs-small);
-    line-height: 1.55;
-    text-align: center;
     color: var(--ef-ink-soft);
   }
 
+  .story__copy {
+    max-width: 40rem;
+  }
+
+  .story__title {
+    margin-bottom: 0.4em;
+    font-size: clamp(2.5rem, 5.2vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--ef-forest);
+  }
+
+  .story__name {
+    color: var(--ef-orange);
+  }
+
+  .story__lede {
+    margin-bottom: 1.1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .story__subhead {
+    max-width: 32ch;
+    margin-bottom: 1.1rem;
+    font-size: clamp(1.45rem, 2.6vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--ef-forest);
+  }
+
+  .story__pains {
+    list-style: none;
+    margin: 0 0 1.3rem;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .story__pains li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-weight: 600;
+  }
+
+  .story__pains li::before {
+    content: '';
+    position: absolute;
+    left: 0.1rem;
+    top: 0.5em;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--ef-orange);
+  }
+
+  .story__copy em {
+    font-weight: 600;
+    padding-bottom: 0.14em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8c22-5 44 4 62 1 18-3 34-4 52-1' fill='none' stroke='%23FF6D00' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E")
+      no-repeat left 100% / 100% 0.3em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
   @media (max-width: 860px) {
-    .story__inner {
+    .story__row {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .story__card {
-      margin-top: 0;
-      width: fit-content;
+    .story__row + .story__row {
+      margin-top: 4rem;
+    }
+
+    .story__art {
+      max-width: 24rem;
+      padding: 1.6rem;
     }
   }
 </style>
