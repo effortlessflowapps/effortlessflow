@@ -1,0 +1,74 @@
+---
+import wordmarkForest from '../assets/wordmark-forest.svg';
+import FlowLine from './FlowLine.astro';
+---
+
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <h1 class="hero__wordmark">
+      <img src={wordmarkForest} alt="EffortlessFlow" width={560} height={160} />
+    </h1>
+    <p class="hero__tagline">Simple, user-friendly apps for everyday life.</p>
+    <p class="hero__belief">
+      Software should fit into your life, not the other way around.
+    </p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="#follow">Follow along</a>
+      <a class="button button--ghost" href="#toby">Meet toby</a>
+    </div>
+  </div>
+  <FlowLine class="hero__flow" />
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(5rem, 12vw, 8.5rem) clamp(3.5rem, 8vw, 5.5rem);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    text-align: center;
+    max-width: 50rem;
+  }
+
+  .hero__wordmark {
+    margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .hero__wordmark img {
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+
+  .hero__tagline {
+    font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+    font-weight: 800;
+    color: var(--ef-ink);
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+  }
+
+  .hero__belief {
+    font-size: var(--fs-body);
+    color: var(--ef-ink-soft);
+    max-width: 34rem;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  .hero__flow {
+    position: absolute;
+    left: 50%;
+    bottom: -1rem;
+    transform: translateX(-50%);
+    width: min(46rem, 120vw);
+    opacity: 0.85;
+  }
+</style>

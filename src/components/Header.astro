@@ -1,0 +1,45 @@
+---
+import wordmarkForest from '../assets/wordmark-forest.svg';
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__home" href="#top">
+      <img src={wordmarkForest} alt="EffortlessFlow" width={150} height={41} />
+    </a>
+    <a class="button button--primary button--small" href="#follow">Follow along</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(255 250 240 / 88%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ef-line-soft);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.8rem;
+  }
+
+  .site-header__home img {
+    width: 150px;
+  }
+
+  .button--small {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    .site-header__home img {
+      width: 122px;
+    }
+  }
+</style>

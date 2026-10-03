@@ -1,0 +1,153 @@
+---
+import listShot from '../assets/toby-list.png';
+import chatShot from '../assets/toby-chat.png';
+
+const highlights = [
+  'Talk to it like a friend — "I want a new laptop" is all it takes',
+  'A ranked list that suggests what to fund first',
+  'Fully offline and private — no account, no network',
+];
+---
+
+<section class="section toby" id="toby">
+  <div class="container toby__inner">
+    <div class="toby__text">
+      <p class="eyebrow">First project · In development</p>
+      <h2>Meet toby</h2>
+      <p class="toby__pitch">
+        toby is a wishlist with a brain — and a bit of a personality. Tell it
+        what you're wishing for in plain words, and it helps you set money
+        aside until it's yours: your wishes ranked by what matters most, and a
+        gentle nudge toward where your spare cash should go next.
+      </p>
+      <ul class="toby__highlights">
+        {
+          highlights.map((h) => (
+            <li>
+              <span class="toby__tick" aria-hidden="true" />
+              {h}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="toby__early">
+        Not in stores yet — you're early. The build is being shared as it
+        happens, and followers help shape what toby becomes.
+      </p>
+      <a class="button button--ghost" href="#follow">Follow the build</a>
+    </div>
+
+    <div class="toby__phones" aria-hidden="true">
+      <figure class="phone phone--chat">
+        <img src={chatShot} alt="" />
+      </figure>
+      <figure class="phone phone--list">
+        <img src={listShot} alt="" />
+      </figure>
+    </div>
+    <p class="visually-hidden">
+      Two screens from toby: the chat where you describe what you're wishing
+      for, and the ranked wishlist it keeps for you.
+    </p>
+  </div>
+</section>
+
+<style>
+  .toby {
+    background: var(--ef-forest-wash);
+  }
+
+  .toby__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 24rem);
+    gap: clamp(3rem, 6vw, 5.5rem);
+    align-items: center;
+  }
+
+  .toby__text {
+    max-width: 40rem;
+  }
+
+  .toby__pitch {
+    font-size: 1.12rem;
+  }
+
+  .toby__highlights {
+    list-style: none;
+    margin: 1.5rem 0 1.75rem;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .toby__highlights li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-weight: 600;
+  }
+
+  .toby__tick {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ef-orange);
+    transform: translateY(-2px);
+  }
+
+  .toby__early {
+    font-size: var(--fs-small);
+    color: var(--ef-ink-soft);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Stacked phone pair: list screen in front on top, chat behind and below */
+  .toby__phones {
+    position: relative;
+    padding-top: 3.5rem;
+  }
+
+  .phone {
+    margin: 0;
+    border-radius: 34px;
+    overflow: hidden;
+    border: 9px solid var(--ef-ink);
+    background: var(--ef-ink);
+    box-shadow: 0 24px 48px -18px rgb(25 27 25 / 35%);
+  }
+
+  .phone img {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .phone--chat {
+    width: 82%;
+    margin-left: auto;
+    rotate: 2.5deg;
+  }
+
+  .phone--list {
+    width: 82%;
+    position: relative;
+    z-index: 1;
+    margin-top: -46%;
+    margin-right: auto;
+    rotate: -1.5deg;
+  }
+
+  @media (max-width: 900px) {
+    .toby__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .toby__phones {
+      width: min(20rem, 78%);
+      margin-inline: auto;
+      padding-top: 2.5rem;
+    }
+  }
+</style>

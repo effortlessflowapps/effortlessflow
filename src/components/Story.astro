@@ -1,0 +1,98 @@
+---
+import mascot from '../assets/toby-mascot.png';
+---
+
+<section class="section story" id="about">
+  <div class="container story__inner">
+    <div class="story__text">
+      <p class="eyebrow">Hi, I'm David</p>
+      <h2>The guy behind EffortlessFlow</h2>
+      <p>
+        EffortlessFlow is a tiny software team — currently just me — building
+        simple, focused apps for everyday problems.
+      </p>
+      <p>
+        You know all those little things that make life harder than it needs to
+        be? The wishlist scattered across three apps. The downloads folder you
+        stopped opening. The thing you quietly gave up and learned to tolerate.
+        Most of what I build starts right there — with an annoying thing I
+        noticed, and the thought <em>surely there's a better way</em>.
+      </p>
+      <p>
+        The plan is software that helps without becoming yet another thing to
+        manage. No accounts you didn't ask for, no features you have to learn —
+        just enough to work, and work well. And I'm building it all in the
+        open, one specific problem at a time.
+      </p>
+      <blockquote class="story__mantra">
+        Just enough to work, and work well.
+      </blockquote>
+    </div>
+    <aside class="story__card" aria-hidden="true">
+      <img src={mascot} width={120} height={99} alt="" />
+      <p class="story__card-note">
+        growth, one small wish at a time — toby's little mascot
+      </p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .story__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .story__text {
+    max-width: 40rem;
+  }
+
+  .story__mantra {
+    margin: 2.25rem 0 0;
+    padding: 1.4rem 1.75rem;
+    border-left: 4px solid var(--ef-orange);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    background: var(--ef-forest-wash);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ef-forest);
+  }
+
+  .story__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 2rem 1.5rem;
+    border: 1.5px solid var(--ef-line);
+    border-radius: var(--radius-card);
+    background: #fff;
+    rotate: 1.5deg;
+    margin-top: 3.4rem;
+  }
+
+  .story__card img {
+    width: 118px;
+  }
+
+  .story__card-note {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.55;
+    text-align: center;
+    color: var(--ef-ink-soft);
+  }
+
+  @media (max-width: 860px) {
+    .story__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .story__card {
+      margin-top: 0;
+      width: fit-content;
+    }
+  }
+</style>

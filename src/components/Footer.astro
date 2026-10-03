@@ -1,0 +1,83 @@
+---
+import wordmarkLight from '../assets/wordmark-light.svg';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <img
+      class="site-footer__wordmark"
+      src={wordmarkLight}
+      alt="EffortlessFlow"
+      width={190}
+      height={54}
+    />
+    <nav class="site-footer__nav" aria-label="Footer">
+      <a href="https://www.instagram.com/effortlessflowapps" rel="me noopener" target="_blank">Instagram</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://x.com/eflowapps" rel="me noopener" target="_blank">X</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/company/effortlessflow" rel="me noopener" target="_blank">LinkedIn</a>
+    </nav>
+    <p class="site-footer__meta">
+      <a href="mailto:hello@effortlessflowapps.com">hello@effortlessflowapps.com</a>
+    </p>
+    <p class="site-footer__meta site-footer__fine">
+      © {year} EffortlessFlow. Built simply, on purpose.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ef-forest);
+    color: var(--ef-cream-on-forest);
+    padding-block: clamp(3rem, 7vw, 4.5rem);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    text-align: center;
+  }
+
+  .site-footer__wordmark {
+    width: 185px;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-footer__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+
+  .site-footer__nav a {
+    color: var(--ef-canvas);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+
+  .site-footer__nav a:hover {
+    color: var(--ef-orange);
+    border-bottom-color: var(--ef-orange);
+  }
+
+  .site-footer__meta {
+    margin: 0;
+    font-size: var(--fs-small);
+  }
+
+  .site-footer__meta a {
+    color: var(--ef-canvas);
+  }
+
+  .site-footer__fine {
+    opacity: 0.75;
+  }
+</style>
