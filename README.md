@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# EffortlessFlow portfolio site
 
-```sh
-bun create astro@latest -- --template minimal
-```
+The one-page home of the EffortlessFlow brand — the story of who we are, a
+first look at toby, and an invitation to follow along on socials.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with [Astro](https://astro.build) (static output, no client-side
+framework). Design follows `brand/docs/Visual_brand_identity.md`.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command           | Action                                     |
+| :---------------- | :----------------------------------------- |
+| `bun install`     | Install dependencies                       |
+| `bun run dev`     | Start local dev server at `localhost:4321` |
+| `bun run build`   | Build the production site to `./dist/`     |
+| `bun run preview` | Preview the production build locally       |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Brand assets
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+`scripts/make-assets.mjs` regenerates the favicon set, OG image, and wordmark
+variants from the master files in `~/EffortlessFlow/brand/Assets/`, normalizing
+all colors to the canonical palette:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Deep Forest `#014426` · Flush Orange `#FF6D00` · Floral White `#FFFAF0` ·
+  Carbon Black `#191B19`
+- Type: Nunito Sans (self-hosted via `@fontsource-variable/nunito-sans`)
+- Logo: custom handwritten wordmark + compact E mark (favicons)
 
-Any static assets, like images, can be placed in the `public/` directory.
+Run it with `bun scripts/make-assets.mjs` (requires `sharp`, included as a dev
+dependency).
 
-## 🧞 Commands
+## Structure
 
-All commands are run from the root of the project, from a terminal:
+- `src/pages/index.astro` — the whole page, composed of sections
+- `src/components/` — Header, Hero, Story, Toby, Follow, Footer, FlowLine
+- `src/styles/global.css` — design tokens (colors, type scale, spacing)
+- `public/` — favicons, OG image
+- `src/assets/` — wordmark variants, toby screenshots, mascot
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site deploys as plain static files — any static host works.
