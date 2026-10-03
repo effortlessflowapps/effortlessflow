@@ -1,0 +1,218 @@
+/* ------------------------------------------------------------------
+   EffortlessFlow design tokens — canonical palette per brand spec.
+   Floral White canvas · Deep Forest structure · Carbon Black info ·
+   Flush Orange accent (graphic use only, never body text).
+------------------------------------------------------------------- */
+
+:root {
+  /* Color */
+  --ef-canvas: #fffaf0;
+  --ef-forest: #014426;
+  --ef-orange: #ff6d00;
+  --ef-ink: #191b19;
+
+  --ef-forest-wash: rgba(1, 68, 38, 0.07);
+  --ef-line: rgba(25, 27, 25, 0.14);
+  --ef-line-soft: rgba(25, 27, 25, 0.08);
+  --ef-ink-soft: rgba(25, 27, 25, 0.72);
+  --ef-cream-on-forest: rgb(255 250 240 / 92%);
+
+  /* Type */
+  --font-body: 'Nunito Sans Variable', 'Nunito Sans', system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  --fs-display: clamp(2.6rem, 6vw, 4.25rem);
+  --fs-h2: clamp(1.7rem, 3.4vw, 2.2rem);
+  --fs-h3: 1.3rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+
+  /* Space & shape */
+  --space-section: clamp(4.5rem, 10vw, 7.5rem);
+  --radius-card: 18px;
+  --radius-button: 999px;
+  --container: 68rem;
+}
+
+/* Base */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ef-canvas);
+  color: var(--ef-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--ef-forest);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ef-orange);
+  text-decoration-color: var(--ef-orange);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--ef-orange);
+  color: var(--ef-canvas);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ef-orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Shared primitives */
+
+.container {
+  width: min(var(--container), 100% - 2.75rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--ef-forest);
+  color: var(--ef-canvas);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-button);
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.7rem;
+  border-radius: var(--radius-button);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease,
+    color 0.15s ease, border-color 0.15s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  background: var(--ef-forest);
+  color: var(--ef-canvas);
+}
+
+.button--primary:hover {
+  background: #02593a;
+  color: var(--ef-canvas);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--ef-forest);
+  border-color: var(--ef-forest);
+}
+
+.button--ghost:hover {
+  border-color: var(--ef-orange);
+  color: var(--ef-orange);
+}
+
+/* Section eyebrow label */
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ef-forest);
+  margin-bottom: 1.1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.6rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ef-orange);
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
