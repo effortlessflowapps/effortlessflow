@@ -27,8 +27,9 @@ const socials = [
 <section class="section follow" id="follow">
   <div class="container">
     <div class="follow__head">
-      <p class="eyebrow">Follow along</p>
-      <h2>Surely there's a better way.</h2>
+      <h2 class="follow__title">
+        Surely there's <span class="follow__accent">a better way</span>.
+      </h2>
       <p class="follow__lede">
         That's the question behind everything built here — and the honest
         answer is still being written, one app at a time. Follow along to watch
@@ -81,9 +82,21 @@ const socials = [
     margin-bottom: 3rem;
   }
 
+  .follow__title {
+    margin-bottom: 0.4em;
+    font-size: clamp(2.5rem, 5.2vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--ef-forest);
+  }
+
+  .follow__accent {
+    color: var(--ef-orange);
+  }
+
   .follow__lede {
     color: var(--ef-ink-soft);
-    font-size: 1.1rem;
+    font-size: clamp(1.08rem, 1.5vw, 1.2rem);
   }
 
   .follow__cards {
