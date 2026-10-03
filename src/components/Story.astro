@@ -6,7 +6,15 @@ import storyProblems from '../assets/story-problems.svg';
 
 <section class="section story" id="about">
   <div class="container">
-    <div class="story__row">
+    <div class="story__row story__row--flip">
+      <div class="story__copy">
+        <h2 class="story__title">Hi, I'm <span class="story__name">David</span></h2>
+        <p class="story__lede">The guy behind EffortlessFlow.</p>
+        <p>
+          EffortlessFlow is a tiny software team — currently just me — building
+          simple, focused apps for everyday problems.
+        </p>
+      </div>
       <figure class="story__art story__art--who">
         <img
           src={davidToon.src}
@@ -17,14 +25,6 @@ import storyProblems from '../assets/story-problems.svg';
         />
         <figcaption>the team, as of today</figcaption>
       </figure>
-      <div class="story__copy">
-        <h2 class="story__title">Hi, I'm <span class="story__name">David</span></h2>
-        <p class="story__lede">The guy behind EffortlessFlow.</p>
-        <p>
-          EffortlessFlow is a tiny software team — currently just me — building
-          simple, focused apps for everyday problems.
-        </p>
-      </div>
     </div>
 
     <div class="story__row">
@@ -193,6 +193,10 @@ import storyProblems from '../assets/story-problems.svg';
     .story__art {
       max-width: 24rem;
       padding: 1.6rem;
+    }
+
+    .story__art--who {
+      order: -1;
     }
   }
 </style>
