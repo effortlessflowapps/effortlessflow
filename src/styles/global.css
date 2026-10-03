@@ -179,7 +179,7 @@ svg {
 }
 
 .button--primary:hover {
-  background: #02593a;
+  background: color-mix(in srgb, var(--ef-forest) 85%, var(--ef-canvas));
   color: var(--ef-canvas);
 }
 
