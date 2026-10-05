@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # ZCode session artifacts
 .zcode/
+.zcodeignore
