@@ -180,46 +180,96 @@ import storyProblems from '../assets/story-problems.svg';
     box-decoration-break: clone;
   }
 
-  /* Scroll moments: the drawings settle into their tilt as they enter, and
-     the underline draws itself under the thought. The words hold still.
-     Gated to engines with scroll timelines; the resting layout is the
-     default everywhere else. */
+  /* Scroll moments, each element scrubbed by its own view timeline: a
+     header rises as it enters, its copy fades in right behind it (the
+     offset range keeps the order), the drawing settles from a more
+     tilted, slightly larger state, and the underline draws under the
+     thought. The resting layout is the default elsewhere. */
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
-      .story__art {
-        animation: art-settle auto linear both;
+      .story__title,
+      .story__subhead {
+        animation-name: text-rise;
+        animation-duration: auto;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: both;
         animation-timeline: view();
-        animation-range: entry 0% cover 38%;
+        animation-range: entry 0% cover 30%;
+      }
+
+      .story__lede,
+      .story__pains,
+      .story__copy p {
+        animation-name: text-fade;
+        animation-duration: auto;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 45%;
+      }
+
+      .story__art {
+        animation-name: art-settle;
+        animation-duration: auto;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 32%;
       }
 
       .story__art--who {
-        --settle-from: -2deg;
+        --settle-from: -4.5deg;
       }
 
       .story__art--why {
-        --settle-from: 2.2deg;
+        --settle-from: 5deg;
       }
 
       .story__art--plan {
-        --settle-from: -1.8deg;
+        --settle-from: -4deg;
       }
 
       .story__copy em {
-        animation: underline-sweep auto linear both;
+        animation-name: underline-sweep;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
         animation-timeline: view();
-        animation-range: entry 10% cover 30%;
+        animation-range: entry 15% cover 40%;
+      }
+    }
+
+    @keyframes text-rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes text-fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
       }
     }
 
     @keyframes art-settle {
       from {
         opacity: 0;
-        transform: translateY(24px) rotate(var(--settle-from, 2deg));
+        transform: translateY(34px) rotate(var(--settle-from, 4deg)) scale(1.06);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(1);
       }
     }
 

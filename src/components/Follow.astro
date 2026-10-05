@@ -163,4 +163,49 @@ const socials = [
     line-height: 1.55;
     color: var(--ef-ink-soft);
   }
+
+  /* The heading rises, then the lede fades in right behind it. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .follow__title {
+        animation-name: follow-rise;
+        animation-duration: auto;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 28%;
+      }
+
+      .follow__lede {
+        animation-name: follow-fade;
+        animation-duration: auto;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry 12% cover 42%;
+      }
+    }
+
+    @keyframes follow-rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes follow-fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
 </style>
