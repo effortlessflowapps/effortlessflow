@@ -180,6 +180,60 @@ import storyProblems from '../assets/story-problems.svg';
     box-decoration-break: clone;
   }
 
+  /* Scroll moments: the drawings settle into their tilt as they enter, and
+     the underline draws itself under the thought. The words hold still.
+     Gated to engines with scroll timelines; the resting layout is the
+     default everywhere else. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .story__art {
+        animation: art-settle auto linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 38%;
+      }
+
+      .story__art--who {
+        --settle-from: -2deg;
+      }
+
+      .story__art--why {
+        --settle-from: 2.2deg;
+      }
+
+      .story__art--plan {
+        --settle-from: -1.8deg;
+      }
+
+      .story__copy em {
+        animation: underline-sweep auto linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
+      }
+    }
+
+    @keyframes art-settle {
+      from {
+        opacity: 0;
+        transform: translateY(24px) rotate(var(--settle-from, 2deg));
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    @keyframes underline-sweep {
+      from {
+        background-size: 0% 0.3em;
+      }
+
+      to {
+        background-size: 100% 0.3em;
+      }
+    }
+  }
+
   @media (max-width: 860px) {
     .story__row {
       grid-template-columns: 1fr;

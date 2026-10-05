@@ -150,6 +150,25 @@ const highlights = [
     rotate: -4deg;
   }
 
+  /* The pair leans toward you when visited — decorative, pointer-only. */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .phone {
+      transition:
+        rotate 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        translate 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toby__phones:hover .phone--chat {
+      rotate: 2.6deg;
+      translate: 0 -6px;
+    }
+
+    .toby__phones:hover .phone--list {
+      rotate: -1.4deg;
+      translate: 0 -6px;
+    }
+  }
+
   @media (max-width: 900px) {
     .toby__inner {
       grid-template-columns: 1fr;

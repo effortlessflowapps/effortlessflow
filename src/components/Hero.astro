@@ -71,4 +71,33 @@ import FlowLine from './FlowLine.astro';
     width: min(46rem, 120vw);
     opacity: 0.85;
   }
+
+  /* One-time arrival: the content rises in as the flow line draws beneath it. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__wordmark,
+    .hero__tagline,
+    .hero__belief,
+    .hero__actions {
+      animation: hero-arrive 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero__tagline {
+      animation-delay: 0.12s;
+    }
+
+    .hero__belief {
+      animation-delay: 0.24s;
+    }
+
+    .hero__actions {
+      animation-delay: 0.36s;
+    }
+
+    @keyframes hero-arrive {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+  }
 </style>

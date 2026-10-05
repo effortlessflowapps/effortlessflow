@@ -14,14 +14,54 @@ const { class: className } = Astro.props;
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
+    class="flow-line"
     d="M8 62 C 120 88, 235 30, 355 45 C 475 60, 545 82, 660 44"
+    pathLength="1"
     stroke="var(--ef-orange)"
     stroke-width="4.5"
     stroke-linecap="round"></path>
   <path
+    class="flow-line flow-line--hook"
     d="M676 38 c 6 3, 9 9, 7 15"
+    pathLength="1"
     stroke="var(--ef-orange)"
     stroke-width="4.5"
     stroke-linecap="round"></path>
-  <circle cx="700" cy="34" r="6.5" fill="var(--ef-orange)"></circle>
+  <circle class="flow-dot" cx="700" cy="34" r="6.5" fill="var(--ef-orange)"></circle>
 </svg>
+
+<style>
+  /* The line draws itself once on load. The drawn state is the default;
+     motion is the enhancement. Offset 1.01 keeps the round start cap hidden. */
+  @media (prefers-reduced-motion: no-preference) {
+    .flow-line {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1.01;
+      animation: flow-draw 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .flow-line--hook {
+      animation-duration: 0.25s;
+      animation-delay: 1.1s;
+    }
+
+    .flow-dot {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: flow-dot 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.3s both;
+    }
+
+    @keyframes flow-draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes flow-dot {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+  }
+</style>
