@@ -1,0 +1,12 @@
+# EffortlessFlow
+
+> EffortlessFlow is a tiny software studio (currently just David) building simple, focused apps for everyday problems. The first app, Toby, is in development: a fully offline, chat-driven wishlist and savings companion. No account, no network, your data stays on your device. The studio belief: software should fit into your life, not the other way around.
+
+The website is a single story-driven page that introduces the studio, explains the thinking behind Toby, and invites people to follow the build on social media.
+
+## Links
+
+- [Instagram @effortlessflowapps](https://www.instagram.com/effortlessflowapps): behind-the-scenes sketches and build updates
+- [X @eflowapps](https://x.com/eflowapps): product thinking and short build notes
+- [LinkedIn EffortlessFlow](https://www.linkedin.com/company/effortlessflowapps): milestones and longer-form updates
+- [Contact](mailto:hello@effortlessflowapps.com)

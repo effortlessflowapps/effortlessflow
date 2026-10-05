@@ -8,7 +8,34 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const canonical = 'https://effortlessflowapps.com/';
+const site = 'https://effortlessflowapps.com';
+const canonical = `${site}/`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site}/#organization`,
+      name: 'EffortlessFlow',
+      url: `${site}/`,
+      logo: `${site}/icon-512.png`,
+      description: 'A tiny software studio building simple, focused apps for everyday problems.',
+      sameAs: [
+        'https://www.instagram.com/effortlessflowapps',
+        'https://x.com/eflowapps',
+        'https://www.linkedin.com/company/effortlessflowapps',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site}/#website`,
+      name: 'EffortlessFlow',
+      url: `${site}/`,
+      publisher: { '@id': `${site}/#organization` },
+      inLanguage: 'en',
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -37,6 +64,7 @@ const canonical = 'https://effortlessflowapps.com/';
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://effortlessflowapps.com/og-default.png" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
